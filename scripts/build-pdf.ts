@@ -122,8 +122,9 @@ async function buildPdf(): Promise<void> {
       {
         dest: outputFile,
         css: pdfCss,
-        // Optional:
-        // pdf_options: { format: 'A4', printBackground: true },
+        launch_options: {
+          args: ['--no-sandbox', '--disable-setuid-sandbox'],
+        },
       },
     );
 

@@ -21,6 +21,7 @@ jobs:
       - name: Building static webpage
         env:
           REACT_APP_EXTRA: ${{ secrets.REACT_APP_EXTRA }}
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium-browser
         run: npm run build
       - name: Deploy to GitHub Pages repository
         uses: peaceiris/actions-gh-pages@v3
