@@ -12,10 +12,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install system dependencies for Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser xvfb libxss1
       - name: Install dependencies
         run: npm install
       - name: Building static webpage
         env:
+          REACT_APP_NAME: ${{ secrets.REACT_APP_NAME }}
+          REACT_APP_DESCRIPTION: ${{ secrets.REACT_APP_DESCRIPTION }}
+          REACT_APP_DOMAIN: ${{ secrets.REACT_APP_DOMAIN }}
+          REACT_APP_WELCOME_MESSAGE: ${{ secrets.REACT_APP_WELCOME_MESSAGE }}
+          REACT_APP_EMAIL: ${{ secrets.REACT_APP_EMAIL }}
           REACT_APP_EXTRA: ${{ secrets.REACT_APP_EXTRA }}
         run: npm run build
       - name: Deploy to GitHub Pages repository
