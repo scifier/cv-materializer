@@ -1,6 +1,6 @@
 ## Education
 
-### **2016 - 2018: PhD Student (Nanobiotechnology)**
+### **2016 - 2018: PhD Studies in Nanobiotechnology**
 
 Doctoral School of Biological and Geonomical Sciences  
 Moldova State University, Chișinău, R.M.

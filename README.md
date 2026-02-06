@@ -47,12 +47,14 @@ Before starting/building the project follow these steps:
 2. Edit the markdown files in `src/assets`.
 3. Change (or just remove) the `public/logo.png` image.
 
-Extra: You can add additional things, like `Google Analytics`, to the `<HEAD>` section, by creating a `.env.local` file with following contents:
+You can add additional things, like `Google Analytics`, to the `<HEAD>` section, by creating a `.env.local` file with following contents:
 
 ```html
 REACT_EDITOR=code
 REACT_APP_EXTRA=<!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=Your_Tracking_ID"></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'Your_Tracking_ID');</script>
 ```
+
+You can also control page breaks in the generated PDF using `REACT_APP_PAGE_BREAK_BEFORE`. This will insert a page break before headings matching the given prefix. The web version will not be affected.
 
 ```bash
 # Start the development server

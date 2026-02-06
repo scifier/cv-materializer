@@ -1,12 +1,17 @@
-## Backend and Blockchain developer based in Moldova
+## About me
 
-_In the past I was a molecular biology researcher, now I’m a blockchain developer._  
-_Interested in machine learning, blockchain, bioinformatics and gamedev._
+<!-- _Senior software engineer with a background in scientific research, working on complex software systems across backend and distributed environments._ -->
+<!-- I work on backend and distributed software systems, focusing on building, integrating, and maintaining non-trivial applications.
 
-The main area of my expertise is backend (Node.js) and blockchain (Ethereum) development.  
-My main language is JavaScript, but I have also experience with other languages in production like Python 3 and Golang.
+My experience includes backend services, system integration, automation, and infrastructure, primarily using JavaScript and TypeScript, with additional production experience in Python and Go.
 
-As a blockchain developer, I have experience with Ethereum smart contract development (Solidity), deployment (Truffle), testing, integration (Web3) and audit.  
-Also I had some experience with Binance-chain, Bitcoin, Algorand, FIO and private Ethereum networks with custom protocols during the development of cross-chain exchange and multi-blockchain wallet solutions.
+I have worked on projects involving blockchain technologies, cross-system integrations, and cloud infrastructure as part of larger software systems. -->
+I have a background in scientific research and work on distributed software systems.
 
-I have also experience with designing, building and maintaining infrastructure on AWS (EC2, Load Balancing, Auto Scaling, Lambda, ECS, RDS, S3, CloudFront, etc.) using various technologies and tools (Docker, Terraform, Gitlab CI, GitHub Actions).
+My work focuses on backend development, system integration, and architectural design of complex, non-trivial applications.
+
+I have experience designing and evolving system architectures, making technical decisions around scalability, reliability, and long-term maintainability.
+
+My experience includes backend services, automation, and infrastructure, primarily using JavaScript and TypeScript, with additional production experience in Python and Go.
+
+I have worked on projects involving blockchain technologies, IoT, and cross-system integrations as part of larger software systems.
