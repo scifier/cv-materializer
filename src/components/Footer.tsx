@@ -1,8 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
 
 export interface FooterProps {
   title: string;
@@ -26,11 +27,11 @@ const Copyright: React.FC = () => (
   </Typography>
 );
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme) => ({
   footer: {
     backgroundColor: theme.palette.background.paper,
-    // marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
+    paddingTop: theme.spacing(0),
+    paddingBottom: theme.spacing(6),
   },
 }));
 

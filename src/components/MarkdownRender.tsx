@@ -1,16 +1,17 @@
 import React from 'react';
-import Markdown, { MarkdownProps } from 'markdown-to-jsx';
-import { withStyles, Theme, StyleRules, WithStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Link, { LinkProps } from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import EmailIcon from '@material-ui/icons/Email';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import PublicIcon from '@material-ui/icons/Public';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import Markdown from 'markdown-to-jsx';
+import { withStyles, WithStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Link, { LinkProps } from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import EmailIcon from '@mui/icons-material/Email';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import PublicIcon from '@mui/icons-material/Public';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-const styles = (theme: Theme): StyleRules => ({
+const styles = (theme: Theme) => ({
   listItem: {
     marginTop: theme.spacing(1),
   },
@@ -77,7 +78,7 @@ const options = {
       },
     },
     li: {
-      component: withStyles(styles)(({ classes, ...props }: WithStyles) => (
+      component: withStyles(styles)(({ classes, ...props }: WithStyles<typeof styles>) => (
         <li className={classes.listItem}>
           <Typography component="span" {...props} />
         </li>
@@ -86,8 +87,16 @@ const options = {
   },
 };
 
-const MarkdownRender: React.FC<MarkdownProps> = (props) => {
-  return <Markdown options={options} {...props} />;
+interface MarkdownRenderProps extends React.PropsWithChildren {
+  className?: string;
+}
+
+const MarkdownRender: React.FC<MarkdownRenderProps> = ({ className, children }) => {
+  return (
+    <div className={className}>
+      <Markdown options={options}>{children as string}</Markdown>
+    </div>
+  );
 };
 
 export default MarkdownRender;

@@ -1,8 +1,8 @@
-#!/bin/sh
-':' //; exec "$(command -v nodejs || command -v node)" "$0" "$@"
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const fs = require('fs');
-const path = require('path');
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const manifest = {
   short_name: `${process.env.REACT_APP_NAME} Portfolio`,
@@ -35,6 +35,9 @@ try {
     path.resolve(__dirname, '..', 'public', 'manifest.json'),
     JSON.stringify(manifest, null, 2),
   );
+  console.log('✓ Manifest generated');
 } catch (e) {
-  console.error(e.message);
+  const error = e instanceof Error ? e.message : String(e);
+  console.error('Error generating manifest:', error);
+  process.exit(1);
 }

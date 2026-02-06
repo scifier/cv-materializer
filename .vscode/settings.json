@@ -6,8 +6,8 @@
   "editor.detectIndentation": false,
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.markdownlint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.markdownlint": "explicit"
   },
   "prettier.configPath": ".prettierrc",
   "eslint.format.enable": true,

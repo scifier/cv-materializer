@@ -8,27 +8,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: '12'
+          node-version: '22'
+          cache: 'npm'
       - name: Install dependencies
-        run: |
-          npm install
-          npm config set script-shell bash --global
+        run: npm install
       - name: Building static webpage
         env:
           REACT_APP_EXTRA: ${{ secrets.REACT_APP_EXTRA }}
         run: npm run build
-      - name: Load environment variables
-        run: source .env
-        shell: bash
-      - name: Push to GitHub Pages repository
-        uses: cpina/github-action-push-to-another-repository@v1.1
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: Deploy to GitHub Pages repository
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          source-directory: 'build'
-          destination-github-username: ${{ github.repository_owner }}
-          destination-repository-name: '${{ github.repository_owner }}.github.io'
-          user-email: $REACT_APP_EMAIL
+          personal_token: ${{ secrets.API_TOKEN_GITHUB }}
+          external_repository: ${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
+          publish_branch: master
+          publish_dir: ./build
+          user_name: 'GitHub Action'
+          user_email: ${{ secrets.REACT_APP_EMAIL }}

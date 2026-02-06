@@ -1,9 +1,10 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
 
 export interface BannerProps {
   contents: {
@@ -17,10 +18,10 @@ export interface BannerProps {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme) => ({
   banner: {
     position: 'relative',
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(1),
     backgroundImage: 'url(https://source.unsplash.com/random)',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'auto',

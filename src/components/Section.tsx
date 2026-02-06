@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Divider from '@material-ui/core/Divider';
+import React, { useEffect, useState } from 'react';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import Grid from '@mui/material/Grid';
 
 import MarkdownRender from './MarkdownRender';
 
@@ -9,10 +9,10 @@ export interface SectionProps {
   contents: Array<string>;
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles<Theme>((theme) => ({
   markdown: {
     ...theme.typography.body2,
-    padding: theme.spacing(3, 0),
+    padding: theme.spacing(2, 0),
   },
 }));
 
@@ -20,20 +20,35 @@ const Section: React.FC<SectionProps> = (props) => {
   const classes = useStyles();
   const { contents } = props;
 
-  const [fetchedContents, setFetchedContents] = useState([] as Array<string>);
+  const [fetchedContents, setFetchedContents] = useState<Array<string>>([]);
+
   useEffect(() => {
-    if (fetchedContents.length === 0) {
-      Promise.all(
-        contents.map((c) => fetch(c).then((response) => response.text())),
-      ).then((responses) => setFetchedContents([...responses]));
-    }
-  });
+    let cancelled = false;
+
+    // Clear previous page content immediately
+    setFetchedContents([]);
+
+    Promise.all(contents.map((c) => fetch(c).then((response) => response.text())))
+      .then((responses) => {
+        if (!cancelled) {
+          setFetchedContents(responses);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setFetchedContents(['']);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [contents]);
 
   return (
     <Grid item xs={12} md={12}>
-      {fetchedContents.map((md: string) => (
-        <div key={md.substring(0, 40)}>
-          <Divider />
+      {fetchedContents.map((md: string, idx) => (
+        <div key={`${contents[idx]}-${md.substring(0, 20)}`}>
           <MarkdownRender className={classes.markdown}>{md}</MarkdownRender>
         </div>
       ))}

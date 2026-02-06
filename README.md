@@ -2,7 +2,7 @@
 
 ![GitHub Actions](https://github.com/scifier/cv-materializer/workflows/CI/badge.svg)
 
-A React.js/typescript resume builder that is using markdown files for generating pages and concatenates them into a downloadable PDF.
+A React.js/typescript responsive resume builder that is using markdown files for generating pages and concatenates them into a downloadable PDF.
 
 - [Usage](#getting-started)
   - [GitHub Pages Deployment](#github-pages-deployment)
@@ -22,8 +22,8 @@ The standard GitHub Pages deployment is pretty easy. Follow these steps to get a
 1. Generate your [personal token](https://github.com/settings/tokens) with repo access if you haven't already.
 2. Fork this project and create a new repository secret with name `API_TOKEN_GITHUB`. Copy here your personal token.
 3. Create a repository named `<YOUR_GITHUB_USERNAME>.github.io` if you haven't already (the repository should be empty).
-4. Edit the .env file.
-5. Edit the markdown files in `src/assets`.
+4. Edit the .env file. If you need a page for your projects add remove `REACT_APP_PROJECTS_DISABLED` or make it false.
+5. Edit the markdown files in `src/assets`. If you have `REACT_APP_PROJECTS_DISABLED` you can leave `projects.md` empty.
 6. Change (or just remove) the `public/logo.png` image.
 7. Push your changes to the `master` branch if you have worked with a local copy of your `cv-materializer` repository.
 8. Profit! (In a few minutes you can access your online portfolio on `https://<YOUR_GITHUB_USERNAME>.github.io` or your custom domain).
